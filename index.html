@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Open Weather API</title>
-        <link rel="stylesheet" href="assets/css/index.css" />
-    </head>
-    <body>
-        <div class="grid">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open Weather API</title>
+    <link rel="stylesheet" href="assets/css/index.css" />
+</head>
+<body>
+    <div class="grid">
         <header>
             <h1>Open Weather Dashboard</h1>
         </header>
 
         <main>
-            <form action="" id="userInput" class="search-bar">
+            <form action="" class="weatherForm" id="weatherForm">
                 <label for="search">Search</label>
-                <input type="text" name="userInput" aria-label="Type in a city to search for a five day weather forecasts" placeholder="Input a city" id="search" />
-                <button class="submit">Submit</button>
+                <input class="userInput" type="text" name="userInput" aria-label="Type in a city to search for a five day weather forecasts" placeholder="Input a city" id="search" />
+                <button type="submit" class="submit">Submit</button>
             </form>
+
+            <aside aria-label="Past city searches" class="previous-searches-container" id="pastInput"></aside>
         </main>
 
-        <aside aria-label="Past city searches" class="previous-searches-container" id="pastInput"></aside>
+        <h2 id="forecast-header">Your 5-Day Weather Forecast</h2>
+        
+        <section class="widget" id="forecast"></section>
+        <footer>Made with <span></span>🤢Disgust by EnduringTimes</footer>
+    </div>
 
-        <section>
-            <h2>Your 5-Day Weather Forcast</h2>
-            <article class="widget" id="fiveDayForecast">
-                <img src="assets/images/sunset.jpg"  alt="a warm sunset"/>
-            </article>
-        </section>
-        <footer>Made with disgust by EnduringTimes</footer>
-        <script src="assets/javascript/index.js"></script>
-       </div>
+    <script src="assets/javascript/index.js"></script>
 </body>
 </html>
