@@ -1,4 +1,6 @@
 const apiKey = '84c39dbd11e87790cbb5a70a3f1adf5a';
+
+// Helper function to capitalize city names
 function capitalizeCityName(city) {
     return city
         .toLowerCase()
@@ -83,6 +85,15 @@ function displayForecast(data) {
     // Show the forecast section and header
     document.getElementById('forecast').style.display = 'grid';
     document.getElementById('forecast-header').style.display = 'block';
+
+    // Create and append the refresh button
+    const refreshButton = document.createElement('button');
+    refreshButton.textContent = 'Check another city';
+    refreshButton.classList.add('refresh-button');
+    refreshButton.addEventListener('click', () => {
+        location.reload();
+    });
+    forecastDiv.appendChild(refreshButton);
 }
 
 // Update search history
