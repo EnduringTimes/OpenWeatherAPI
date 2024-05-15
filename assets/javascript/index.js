@@ -20,7 +20,7 @@ document.getElementById('weatherForm').addEventListener('submit', function(event
 
 // Get coordinates and get weather data
 function getCoordinates(city) {
-    const url = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
+    const url = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
     fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -54,7 +54,7 @@ function displayCurrentWeather(data, city) {
     currentWeatherDiv.id = 'current-weather';
     currentWeatherDiv.innerHTML = `
         <h2>${city} (${new Date(weather.dt_txt).toLocaleDateString()})</h2>
-        <p><img src="http://openweathermap.org/img/wn/${weather.weather[0].icon}.png" alt="${weather.weather[0].description}"> ${weather.weather[0].description}</p>
+        <p><img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}.png" alt="${weather.weather[0].description}"> ${weather.weather[0].description}</p>
         <p>Temperature: ${weather.main.temp} °C</p>
         <p>Humidity: ${weather.main.humidity}%</p>
         <p>Wind Speed: ${weather.wind.speed} m/s</p>
@@ -74,7 +74,7 @@ function displayForecast(data) {
         forecastItem.classList.add('fiveDayForecast');
         forecastItem.innerHTML = `
             <h3>${new Date(forecast.dt_txt).toLocaleDateString()}</h3>
-            <p><img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png" alt="${forecast.weather[0].description}"> ${forecast.weather[0].description}</p>
+            <p><img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png" alt="${forecast.weather[0].description}"> ${forecast.weather[0].description}</p>
             <p>Temperature: ${forecast.main.temp} °C</p>
             <p>Humidity: ${forecast.main.humidity}%</p>
             <p>Wind Speed: ${forecast.wind.speed} m/s</p>
