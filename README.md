@@ -4,7 +4,7 @@
 
 The Open Weather Dashboard is a web application that allows users to check the current weather and 5-day forecast for multiple cities. The application is built using HTML, CSS, and JavaScript, and it uses the OpenWeather API to fetch weather data.
 
-![Weather Dashboard Screenshot](assets/images/screenshot.png)
+![Weather Dashboard Screenshot](assets/images/dashboard.png)
 
 ## Features
 
@@ -29,11 +29,12 @@ The Open Weather Dashboard is a web application that allows users to check the c
 2. Enter the name of a city in the search bar and click "Submit".
 3. The current weather and 5-day forecast for the city will be displayed.
 4. Previous searches are saved and can be clicked to quickly view weather data again.
+5. [Live Application](https://enduringtimes.github.io/OpenWeatherAPI/)
 
 ## Technologies Used
 
 - HTML5
-- CSS3
+- CSS
 - JavaScript
 - OpenWeather API
 
@@ -41,5 +42,3 @@ The Open Weather Dashboard is a web application that allows users to check the c
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-
-Module 6 challenge

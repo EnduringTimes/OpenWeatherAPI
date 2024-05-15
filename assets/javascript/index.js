@@ -60,40 +60,44 @@ function displayCurrentWeather(data, city) {
         <p>Wind Speed: ${weather.wind.speed} m/s</p>
     `;
     const main = document.querySelector('main');
-    main.innerHTML = '';
-    main.appendChild(currentWeatherDiv);
+    if (main) {
+        main.innerHTML = '';
+        main.appendChild(currentWeatherDiv);
+    }
 }
 
 // Display forecast
 function displayForecast(data) {
     const forecastDiv = document.getElementById('forecast');
-    forecastDiv.innerHTML = '';
-    for (let i = 0; i < data.list.length; i += 8) {
-        const forecast = data.list[i];
-        const forecastItem = document.createElement('article');
-        forecastItem.classList.add('fiveDayForecast');
-        forecastItem.innerHTML = `
-            <h3>${new Date(forecast.dt_txt).toLocaleDateString()}</h3>
-            <p><img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png" alt="${forecast.weather[0].description}"> ${forecast.weather[0].description}</p>
-            <p>Temperature: ${forecast.main.temp} °C</p>
-            <p>Humidity: ${forecast.main.humidity}%</p>
-            <p>Wind Speed: ${forecast.wind.speed} m/s</p>
-        `;
-        forecastDiv.appendChild(forecastItem);
+    if (forecastDiv) {
+        forecastDiv.innerHTML = '';
+        for (let i = 0; i < data.list.length; i += 8) {
+            const forecast = data.list[i];
+            const forecastItem = document.createElement('article');
+            forecastItem.classList.add('fiveDayForecast');
+            forecastItem.innerHTML = `
+                <h3>${new Date(forecast.dt_txt).toLocaleDateString()}</h3>
+                <p><img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png" alt="${forecast.weather[0].description}"> ${forecast.weather[0].description}</p>
+                <p>Temperature: ${forecast.main.temp} °C</p>
+                <p>Humidity: ${forecast.main.humidity}%</p>
+                <p>Wind Speed: ${forecast.wind.speed} m/s</p>
+            `;
+            forecastDiv.appendChild(forecastItem);
+        }
+
+        // Show the forecast section and header
+        document.getElementById('forecast').style.display = 'grid';
+        document.getElementById('forecast-header').style.display = 'block';
+
+        // Create and append the refresh button
+        const refreshButton = document.createElement('button');
+        refreshButton.textContent = 'Check another city';
+        refreshButton.classList.add('refresh-button');
+        refreshButton.addEventListener('click', () => {
+            location.reload();
+        });
+        forecastDiv.appendChild(refreshButton);
     }
-
-    // Show the forecast section and header
-    document.getElementById('forecast').style.display = 'grid';
-    document.getElementById('forecast-header').style.display = 'block';
-
-    // Create and append the refresh button
-    const refreshButton = document.createElement('button');
-    refreshButton.textContent = 'Check another city';
-    refreshButton.classList.add('refresh-button');
-    refreshButton.addEventListener('click', () => {
-        location.reload();
-    });
-    forecastDiv.appendChild(refreshButton);
 }
 
 // Update search history
@@ -109,14 +113,16 @@ function updateSearchHistory(city) {
 // Display search history
 function displaySearchHistory() {
     const searchHistoryDiv = document.getElementById('pastInput');
-    searchHistoryDiv.innerHTML = '';
-    const searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
-    searchHistory.forEach(city => {
-        const cityButton = document.createElement('button');
-        cityButton.textContent = city;
-        cityButton.addEventListener('click', () => getCoordinates(city));
-        searchHistoryDiv.appendChild(cityButton);
-    });
+    if (searchHistoryDiv) {
+        searchHistoryDiv.innerHTML = '';
+        const searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+        searchHistory.forEach(city => {
+            const cityButton = document.createElement('button');
+            cityButton.textContent = city;
+            cityButton.addEventListener('click', () => getCoordinates(city));
+            searchHistoryDiv.appendChild(cityButton);
+        });
+    }
 }
 
 displaySearchHistory();
